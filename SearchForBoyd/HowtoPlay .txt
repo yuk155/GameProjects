@@ -1,0 +1,5 @@
+Press 1 to select the player object. 
+Use WASD to move. 
+to change which ghost you want to be, press another number. 
+Only works with numpad keys
+

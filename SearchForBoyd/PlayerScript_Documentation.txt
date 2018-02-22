@@ -1,0 +1,34 @@
+Player.cs
+-Put the 'Recording manager' gameObject into the "Recorder Object" slot
+	-The "Recorder" will be filled in automatically
+-The 'Up','Down','Left', and 'Right' items refer to sprite arrays.
+	-They should each have two elements.
+	-The elements should be the sprites associated with that movement
+		Ex: The "Up" array should have the FBackWalk1 and FBackWalk2 sprites
+
+Ghost.cs
+-Put the 'Recording manager gameObject into the "Recorder Object" slot
+-Put the PLAYER IS FOR REAL gameObject into the "Player Object" slot
+	-the Player Script slot will be filled in automatically
+-The "Ghost Recording" box tells the ghost which array to read from the Recording manager
+	-Type in either "recording 1" (lowercase with the space), "recording 2", or "recording 3" depending on which ghost it is and which recording button it is associated with
+
+RecordingTrigger.cs
+-"Recorder Object" and "Player Object" require the same input as the Ghost script
+-Put the 'Ghost' gameObject that you want associated with this recording button into the "Ghost" paramter
+	-The "Recording Number" parameter you type out should match identically with the "Ghost Recording" parameter for the Ghost object you are using
+
+StopRecording.cs
+-Only one of these is needed, as clicking it once will affect all ghosts in the scene
+-"Player Object" is the same as it is on the Trigger and Ghost
+-Starting Sprite is the sprite that will be used when the player is reset back to their starting point
+	-For testing, I used the FFront_Layer 2
+-Each ghost gameObject in the scene should be placed as an element within the "Ghost Objects" array
+-Change the size of the array to the exact number of Ghosts it is using
+
+PlayRecording.cs
+-Each play button is associated with a particular Ghost object
+-The "Recorder Object" uses the same manager object as everything else
+-The "Ghost Object" is the Ghost gameObject that this play button will be associated with
+-The "Recording Number" should be the exact same string that is typed into the associated Ghost's "Ghost Recording" (either "recording 1", "recording 2", or "recording 3")
+
