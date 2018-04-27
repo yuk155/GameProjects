@@ -6,7 +6,7 @@ public class RecipeHandler : MonoBehaviour {
 
 	public float spawnTime; 
 	public float startTime; 
-	public GameObject[] possibleRecipes = new GameObject[3];
+	public GameObject[] possibleRecipes;
 	public List<GameObject> recipes = new List<GameObject>(); 
 	public GameObject currRecipe; 
 	public int recipeIndex; 
@@ -20,19 +20,24 @@ public class RecipeHandler : MonoBehaviour {
 	public float lastSpawn; 
 	public float currTime; 
 
+	public GameObject tempRecipe; 
+
 
 	public float adjust; 
 	public int moveRecipe; 
 	// Use this for initialization
 	void Start () {
 		//HARD CODEDED FOR THE OFFSET BETWEEN RECIPE OBJECTS 
-		adjust = 0.5f;
+		adjust = 0.55f;
 		recipeIndex = 0;
 		spawnPos = transform.position;
-		spawnRot = Quaternion.identity;
+		spawnRot = transform.rotation;
 		//SPAWN INITIAL RECIPE -> Onion only recipe 
-		currRecipe = Instantiate(possibleRecipes[recipeIndex], spawnPos, spawnRot); 
+		currRecipe = Instantiate(possibleRecipes[0], spawnPos, spawnRot); 
 		recipes.Add (currRecipe);
+		getSpawnTime ();
+
+
 
 	}
 	
@@ -40,7 +45,7 @@ public class RecipeHandler : MonoBehaviour {
 	void Update () {
 		currTime += Time.deltaTime;
 		//SPAWN A RECIPE BASED ON A RANDOM VALUE DEFINED IN GETSPAWNTIME()
-		if (currTime - (lastSpawn + recipeSpawnTime) < 0.2) {
+		if ((int)currTime % recipeSpawnTime == 0 && (int)currTime > 0) {
 			spawnRecipe ();
 			getSpawnTime ();
 		}
@@ -52,8 +57,9 @@ public class RecipeHandler : MonoBehaviour {
 
 	public void spawnRecipe()
 	{
-		recipeIndex = Random.Range (0, possibleRecipes.Length-1); 
-		lastPosition = recipes [recipes.Count - 1].transform.position;
+		recipeIndex = Random.Range (0, possibleRecipes.Length); 
+		lastPosition = recipes [recipes.Count-1].transform.position;
+		spawnPos = lastPosition;
 		spawnPos.z += adjust;
 		currRecipe = Instantiate (possibleRecipes [recipeIndex], spawnPos, spawnRot);
 		recipes.Add (currRecipe);
@@ -64,7 +70,7 @@ public class RecipeHandler : MonoBehaviour {
 	public void getSpawnTime()
 	{
 		//HARDCODED TO SPAWN RECIPES EVERY 4 to 8 SECONDS 
-		recipeSpawnTime = Random.Range (4, 8);
+		recipeSpawnTime = Random.Range (4, 6);
 	}
 
 	public void checkRecipes()
@@ -74,7 +80,11 @@ public class RecipeHandler : MonoBehaviour {
 			recipeScript = recipes[i].GetComponent<Recipe> ();
 			if (recipeScript.checkIfExpired ()) {
 				//remove the recipe from the list
+				Debug.Log("remove recipe");
+				tempRecipe = recipes [i];
 				recipes.Remove (recipes[i]); 
+				Destroy (tempRecipe);
+
 				//move all of the other recipes over 
 				for (int j = i; j < recipes.Count; j++) {
 					currPosition = recipes [j].transform.position;
@@ -92,7 +102,7 @@ public class RecipeHandler : MonoBehaviour {
 		for (int i = 0; i < ingredients.Length; i++) {
 			if (ingredients [i].name == "Tomato") {
 				tomatoCount++;
-			} else if (ingredients [i].name == "Onion") {
+			} else if (ingredients [i].name == "Onion") { 
 				onionCount++;
 			}
 		}

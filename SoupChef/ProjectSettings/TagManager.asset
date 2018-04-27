@@ -11,6 +11,7 @@ TagManager:
   - Pot
   - Score
   - Bowl
+  - Knife
   layers:
   - Default
   - TransparentFX

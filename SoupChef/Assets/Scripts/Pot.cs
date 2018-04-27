@@ -12,6 +12,10 @@ public class Pot : MonoBehaviour {
 	public bool isCooking; 
 	public bool isCooked; 
 	public Image cookingProgessBar;
+	public Image burningProgressBar; 
+	public bool isBurned; 
+	public bool isBurning; 
+	public float burnTime; 
 
 	//Access recipe handler
 	public GameObject recipeHandler; 
@@ -26,6 +30,7 @@ public class Pot : MonoBehaviour {
 	public GameObject tomatoIngredientSpawner;
 	public IngredientSpawner ingredientSpawnerScript; 
 
+	public bool isBadFood;
 
 
 
@@ -38,10 +43,22 @@ public class Pot : MonoBehaviour {
 		isCooking = false; 
 		isCooked = false;
 
+		burnTime = 3.0f;
+		isBurned = false; 
+		isBurning = false; 
+
+		isBadFood = false; 
+
 		//INSTANTIATE DEFAULTS FOR COOKING PROGRESS BAR 
 		cookingProgessBar.type = Image.Type.Filled;
 		cookingProgessBar.fillMethod = Image.FillMethod.Horizontal;
+		cookingProgessBar.fillOrigin = 1;
 		cookingProgessBar.fillAmount = 0;
+
+		burningProgressBar.type = Image.Type.Filled;
+		burningProgressBar.fillMethod = Image.FillMethod.Horizontal;
+		burningProgressBar.fillOrigin = 1; 
+		burningProgressBar.fillAmount = 0;
 
 		recipeHandlerScript = recipeHandler.GetComponent<RecipeHandler> ();
 		isValidRecipe = false;
@@ -53,6 +70,7 @@ public class Pot : MonoBehaviour {
 		cookFood ();
 		if (isCooking) {
 			startProgressBar (cookingProgessBar, isCooking, isCooked, cookingTime);
+			isBadFood = false;
 		}
 		if (isCooked) {
 			recipe = recipeHandlerScript.findValidRecipe (ingredients);
@@ -60,7 +78,13 @@ public class Pot : MonoBehaviour {
 				isValidRecipe = true;
 			}
 		}
-		
+		//start the burning part
+		if (!isCooking && isCooked) {
+			startProgressBar (burningProgressBar, isBurning, isBurned, burnTime);
+		}
+
+		checkValidFood ();
+		badFoodCheck ();
 	}
 
 	public void OnTriggerEnter(Collider other)
@@ -71,14 +95,14 @@ public class Pot : MonoBehaviour {
 				ingredientScript = other.gameObject.GetComponent<Ingredient>();
 				if (ingredientScript.numberOfCuts > 3) {
 					ingredients [ingredientsNum] = other.gameObject;
-				} else {
-					if (ingredientScript.name == "Tomato") {
-						ingredientSpawnerScript = tomatoIngredientSpawner.GetComponent<IngredientSpawner> ();
-					} else if (ingredientScript.name == "Onion") {
-						ingredientSpawnerScript = onionIngredientSpawner.GetComponent<IngredientSpawner> ();
-					}
-					ingredientSpawnerScript.removeObject (other.gameObject);
+				} 
+				if (ingredientScript.name == "Tomato") {
+					ingredientSpawnerScript = tomatoIngredientSpawner.GetComponent<IngredientSpawner> ();
+				} else if (ingredientScript.name == "Onion") {
+					ingredientSpawnerScript = onionIngredientSpawner.GetComponent<IngredientSpawner> ();
 				}
+				ingredientSpawnerScript.removeObject (other.gameObject);
+
 
 			} else {
 				Debug.Log ("Max ingredients reached");
@@ -109,8 +133,28 @@ public class Pot : MonoBehaviour {
 		}
 	}
 
+	public void badFoodCheck()
+	{
+		if (isBurned) {
+			isBadFood = true; 
+		}
+		if (!isValidRecipe) {
+			isBadFood = true; 
+		}
+	}
 
-
+	public void checkValidFood()
+	{
+		if (isCooked) {
+			recipe = recipeHandlerScript.findValidRecipe (ingredients);
+			if (recipe != null) {
+				isValidRecipe = true;
+			} else {
+				isValidRecipe = false; 
+			}
+		}
+	}
+	 
 
 		
 

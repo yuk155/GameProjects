@@ -25,7 +25,7 @@ public class Bowl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		changeMaterial;
+		changeMaterial();
 	}
 
 	public void changeMaterial()
@@ -42,12 +42,14 @@ public class Bowl : MonoBehaviour {
 	public void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "Pot") {
-			if (potScript.isCooked && potScript.isValidRecipe && !isDirty && !hasSoup) {
+			if (potScript.isCooked && potScript.isBadFood && !isDirty && !hasSoup) {
 				recipe = potScript.recipe; 
 				hasSoup = true; 
 				//reset pot script values 
 				potScript.isCooked = false;
 				potScript.isValidRecipe = false; 
+				potScript.isBurned = false;
+				potScript.isBadFood = false;
 			}
 		} 
 	}
