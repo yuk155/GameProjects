@@ -9,15 +9,20 @@ public class IngredientSpawner : MonoBehaviour {
 	public GameObject newObject;
 	public int size; 
 	public int ptr;
+	public Vector3 spawnLoc;
+	public Quaternion spawnRot;
 	// Use this for initialization
 	void Start () {
 		//HARDCODED TO ONLY ALLOW 5 INGREDIENTS ON THE MAP AT A TIME
 		size = 5; 
 		ptr = 0; 
 		ingredientArray = new GameObject[size];
-		newObject = Instantiate (ingredient, transform.position); 
+		newObject = Instantiate (ingredient, spawnLoc, spawnRot); 
 		ingredientArray [ptr] = newObject;
 		ptr++;
+
+		spawnRot = Quaternion.identity;
+		spawnLoc = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -30,8 +35,8 @@ public class IngredientSpawner : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Ingredient") {
 			//IF THERE IS SPACE IN THE ARRAY 
-			if (checkArray) {
-				newObject = Instantiate (ingredient, transform.position);
+			if (checkArray()) {
+				newObject = Instantiate (ingredient, spawnLoc, spawnRot);
 				ingredientArray [ptr] = newObject;
 				ptr++;
 			} else {
@@ -43,7 +48,7 @@ public class IngredientSpawner : MonoBehaviour {
 				Debug.Log ("Object at index: " + ptr + " deleted");
 				Destroy (newObject);
 
-				newObject = Instantiate (ingredient, transform.position);
+				newObject = Instantiate (ingredient, spawnLoc, spawnRot);
 				ingredientArray [ptr] = newObject; 
 				if (ptr == 4) {
 					ptr = 0;

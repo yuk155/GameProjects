@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ingredient
+  - projectile
+  - FxTemporaire
+  - TeleportIgnore
+  - Pot
+  - Score
+  - Bowl
   layers:
   - Default
   - TransparentFX
