@@ -19,7 +19,7 @@ public class Recipe : MonoBehaviour {
 	void Start () {
 		//setIngredients (); 
 		//each recipe has 10 seconds to complete before it expires 
-		maxTime = 10f;
+		maxTime = 20f;
 		isExpired = false; 
 		progress = 0;
 
@@ -29,9 +29,6 @@ public class Recipe : MonoBehaviour {
 		recipeProgressBar.fillClockwise = false; 
 		recipeProgressBar.fillMethod = Image.FillMethod.Horizontal;
 		recipeProgressBar.fillOrigin = 1;
-		Debug.Log ("Start: " + recipeProgressBar.fillAmount);
-		Debug.Log (recipeProgressBar.name);
-
 	}
 	
 	// Update is called once per frame

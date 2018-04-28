@@ -122,6 +122,7 @@ namespace VRTK.GrabAttachMechanics
         /// <param name="applyGrabbingObjectVelocity">If true will apply the current velocity of the grabbing object to the grabbed object on release.</param>
         public virtual void StopGrab(bool applyGrabbingObjectVelocity)
         {
+			
             grabbedObject = null;
             grabbedObjectScript = null;
             trackPoint = null;

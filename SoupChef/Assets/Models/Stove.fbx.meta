@@ -1,0 +1,281 @@
+fileFormatVersion: 2
+guid: b23802314472e584c93f6b1182e90851
+timeCreated: 1524868447
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: BACKING
+    100002: bezier1
+    100004: bigknob
+    100006: blGriddle
+    100008: brGriddle
+    100010: DOOR
+    100012: door
+    100014: group
+    100016: group1
+    100018: handle
+    100020: HOLDER
+    100022: holder
+    100024: knob
+    100026: knob2
+    100028: knob3
+    100030: knob4
+    100032: knobhandle
+    100034: oldstove
+    100036: pasted__griddle
+    100038: pasted__group
+    100040: pasted__group 1
+    100042: pasted__holder
+    100044: pasted__holder 1
+    100046: pasted__knobhandle
+    100048: pasted__knobhandle 1
+    100050: pasted__pasted__griddle
+    100052: pasted__pasted__holder
+    100054: pasted__pasted__knob2
+    100056: pasted__pasted__knobhandle
+    100058: pasted__pasted__pasted__holder
+    100060: pasted__pasted__pasted__knobhandle
+    100062: pasted__pasted__pasted__pasted__pTorus1
+    100064: pasted__pasted__pasted__pTorus1
+    100066: pasted__pasted__pasted__pTorus1 1
+    100068: pasted__pasted__pCylinder1
+    100070: pasted__pasted__pCylinder2
+    100072: pasted__pasted__pTorus1
+    100074: pasted__pasted__STOVE
+    100076: pasted__pasted__STOVE 1
+    100078: pasted__pCylinder1
+    100080: pasted__pCylinder1 1
+    100082: pasted__pCylinder2
+    100084: pasted__pCylinder2 1
+    100086: pasted__STOVE
+    100088: pasted__STOVE 1
+    100090: pCylinder1
+    100092: pCylinder2
+    100094: STOVE
+    100096: //RootNode
+    100098: SWITCH
+    100100: switch1
+    100102: tlGriddle
+    100104: trGriddle
+    400000: BACKING
+    400002: bezier1
+    400004: bigknob
+    400006: blGriddle
+    400008: brGriddle
+    400010: DOOR
+    400012: door
+    400014: group
+    400016: group1
+    400018: handle
+    400020: HOLDER
+    400022: holder
+    400024: knob
+    400026: knob2
+    400028: knob3
+    400030: knob4
+    400032: knobhandle
+    400034: oldstove
+    400036: pasted__griddle
+    400038: pasted__group
+    400040: pasted__group 1
+    400042: pasted__holder
+    400044: pasted__holder 1
+    400046: pasted__knobhandle
+    400048: pasted__knobhandle 1
+    400050: pasted__pasted__griddle
+    400052: pasted__pasted__holder
+    400054: pasted__pasted__knob2
+    400056: pasted__pasted__knobhandle
+    400058: pasted__pasted__pasted__holder
+    400060: pasted__pasted__pasted__knobhandle
+    400062: pasted__pasted__pasted__pasted__pTorus1
+    400064: pasted__pasted__pasted__pTorus1
+    400066: pasted__pasted__pasted__pTorus1 1
+    400068: pasted__pasted__pCylinder1
+    400070: pasted__pasted__pCylinder2
+    400072: pasted__pasted__pTorus1
+    400074: pasted__pasted__STOVE
+    400076: pasted__pasted__STOVE 1
+    400078: pasted__pCylinder1
+    400080: pasted__pCylinder1 1
+    400082: pasted__pCylinder2
+    400084: pasted__pCylinder2 1
+    400086: pasted__STOVE
+    400088: pasted__STOVE 1
+    400090: pCylinder1
+    400092: pCylinder2
+    400094: STOVE
+    400096: //RootNode
+    400098: SWITCH
+    400100: switch1
+    400102: tlGriddle
+    400104: trGriddle
+    2100000: lambert1
+    2300000: handle
+    2300002: HOLDER
+    2300004: holder
+    2300006: knobhandle
+    2300008: oldstove
+    2300010: pasted__holder
+    2300012: pasted__holder 1
+    2300014: pasted__knobhandle
+    2300016: pasted__knobhandle 1
+    2300018: pasted__pasted__holder
+    2300020: pasted__pasted__knobhandle
+    2300022: pasted__pasted__pasted__holder
+    2300024: pasted__pasted__pasted__knobhandle
+    2300026: pasted__pasted__pasted__pasted__pTorus1
+    2300028: pasted__pasted__pasted__pTorus1
+    2300030: pasted__pasted__pasted__pTorus1 1
+    2300032: pasted__pasted__pCylinder1
+    2300034: pasted__pasted__pCylinder2
+    2300036: pasted__pasted__pTorus1
+    2300038: pasted__pasted__STOVE
+    2300040: pasted__pasted__STOVE 1
+    2300042: pasted__pCylinder1
+    2300044: pasted__pCylinder1 1
+    2300046: pasted__pCylinder2
+    2300048: pasted__pCylinder2 1
+    2300050: pasted__STOVE 1
+    2300052: pCylinder1
+    2300054: pCylinder2
+    2300056: switch1
+    3300000: handle
+    3300002: HOLDER
+    3300004: holder
+    3300006: knobhandle
+    3300008: oldstove
+    3300010: pasted__holder
+    3300012: pasted__holder 1
+    3300014: pasted__knobhandle
+    3300016: pasted__knobhandle 1
+    3300018: pasted__pasted__holder
+    3300020: pasted__pasted__knobhandle
+    3300022: pasted__pasted__pasted__holder
+    3300024: pasted__pasted__pasted__knobhandle
+    3300026: pasted__pasted__pasted__pasted__pTorus1
+    3300028: pasted__pasted__pasted__pTorus1
+    3300030: pasted__pasted__pasted__pTorus1 1
+    3300032: pasted__pasted__pCylinder1
+    3300034: pasted__pasted__pCylinder2
+    3300036: pasted__pasted__pTorus1
+    3300038: pasted__pasted__STOVE
+    3300040: pasted__pasted__STOVE 1
+    3300042: pasted__pCylinder1
+    3300044: pasted__pCylinder1 1
+    3300046: pasted__pCylinder2
+    3300048: pasted__pCylinder2 1
+    3300050: pasted__STOVE 1
+    3300052: pCylinder1
+    3300054: pCylinder2
+    3300056: switch1
+    4300000: oldstove
+    4300002: pasted__STOVE
+    4300004: pCylinder1
+    4300006: pasted__pasted__pTorus1
+    4300008: pasted__pCylinder1
+    4300010: pasted__pasted__pasted__pTorus1
+    4300012: pasted__pCylinder1
+    4300014: pasted__pasted__pasted__pTorus1
+    4300016: pasted__pasted__pCylinder1
+    4300018: pasted__pasted__pasted__pasted__pTorus1
+    4300020: pasted__pasted__STOVE
+    4300022: handle
+    4300024: pasted__pasted__STOVE
+    4300026: knobhandle
+    4300028: holder
+    4300030: pasted__knobhandle
+    4300032: pasted__holder
+    4300034: pasted__knobhandle
+    4300036: pasted__holder
+    4300038: pasted__pasted__knobhandle
+    4300040: pasted__pasted__holder
+    4300042: pasted__pasted__pasted__knobhandle
+    4300044: pasted__pasted__pasted__holder
+    4300046: switch1
+    4300048: HOLDER
+    4300050: pCylinder2
+    4300052: pasted__pCylinder2
+    4300054: pasted__pCylinder2
+    4300056: pasted__pasted__pCylinder2
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 25
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -16,6 +16,11 @@ public class Score : MonoBehaviour {
 	public Text TimerText; 
 	public Bowl bowlScript; 
 
+	public GameObject recipeHandler;
+	public RecipeHandler recipeHandlerScript;
+
+	public GameObject tempRecipe;
+
 	// Use this for initialization
 	void Start () {
 		value = 50; 	
@@ -23,6 +28,7 @@ public class Score : MonoBehaviour {
 		maxTime = 300f; 
 		currTime = 0; 
 		scoreText.text = score.ToString();
+		recipeHandlerScript = recipeHandler.GetComponent<RecipeHandler> ();
 
 	}
 
@@ -41,10 +47,38 @@ public class Score : MonoBehaviour {
 		if (other.gameObject.tag == "Bowl") {
 			bowlScript = other.gameObject.GetComponent<Bowl> ();
 			if (bowlScript.hasSoup) {
-				score += value;
-				scoreText.text = score.ToString();
-				bowlScript.hasSoup = false; 
-				bowlScript.isDirty = true; 
+				if (bowlScript.isGoodSoup) {
+					Debug.Log ("is good soup");
+					tempRecipe = recipeHandlerScript.checkMatching (bowlScript.onionNum, bowlScript.tomatoNum);
+					if (tempRecipe != null) {
+						Debug.Log ("found matching recipe");
+						score += value;
+						scoreText.text = score.ToString ();
+						bowlScript.hasSoup = false; 
+						bowlScript.isDirty = true; 
+						bowlScript.onionNum = 0;
+						bowlScript.tomatoNum = 0;
+						recipeHandlerScript.removeRecipe (tempRecipe);
+					} else {
+						Debug.Log ("No available recipe");
+						scoreText.text = score.ToString ();
+						bowlScript.hasSoup = false; 
+						bowlScript.isDirty = true; 
+						bowlScript.onionNum = 0;
+						bowlScript.tomatoNum = 0;
+					}
+
+				} else if (!bowlScript.isGoodSoup) {
+					score -= value; 
+					scoreText.text = score.ToString ();
+					bowlScript.hasSoup = false;
+					bowlScript.isDirty = true;
+					bowlScript.onionNum = 0;
+					bowlScript.tomatoNum = 0;
+				}
+
+
+
 			}
 		}
 	}

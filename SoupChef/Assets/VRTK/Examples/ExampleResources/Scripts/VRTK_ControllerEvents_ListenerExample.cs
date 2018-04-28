@@ -1,5 +1,5 @@
 ﻿namespace VRTK.Examples
-{
+{/*
     using UnityEngine;
 
     public class VRTK_ControllerEvents_ListenerExample : MonoBehaviour
@@ -256,4 +256,5 @@
             DebugLogger(VRTK_ControllerReference.GetRealIndex(e.controllerReference), "CONTROLLER STATE", "INDEX CHANGED", e);
         }
     }
+    */
 }

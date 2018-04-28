@@ -1,5 +1,6 @@
 ﻿namespace VRTK
 {
+	
     using UnityEngine;
 #if UNITY_EDITOR
     using UnityEditor;
@@ -180,4 +181,5 @@
             DontDestroyOnLoad(gameObject);
         }
     }
+    
 }

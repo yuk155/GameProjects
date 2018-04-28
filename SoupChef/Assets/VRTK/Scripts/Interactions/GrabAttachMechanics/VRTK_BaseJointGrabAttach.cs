@@ -41,6 +41,19 @@ namespace VRTK.GrabAttachMechanics
             if (base.StartGrab(grabbingObject, givenGrabbedObject, givenControllerAttachPoint))
             {
                 SnapObjectToGrabToController(givenGrabbedObject);
+
+				if (grabbedObject.gameObject.tag == "Knife") {
+					CapsuleCollider temp = grabbedObject.GetComponent<CapsuleCollider> ();
+					temp.isTrigger = true; 
+
+				}
+
+				/*
+				if (grabbedObject.gameObject.tag == "Ingredient") {
+					Rigidbody rigidBody = grabbedObject.GetComponent<Rigidbody> ();
+					rigidBody.detectCollisions = false;
+				} */
+
                 return true;
             }
             return false;
@@ -52,6 +65,17 @@ namespace VRTK.GrabAttachMechanics
         /// <param name="applyGrabbingObjectVelocity">If true will apply the current velocity of the grabbing object to the grabbed object on release.</param>
         public override void StopGrab(bool applyGrabbingObjectVelocity)
         {
+			if (grabbedObject.gameObject.tag == "Ingredient") {
+				Rigidbody rigidBody = grabbedObject.GetComponent<Rigidbody> ();
+				rigidBody.useGravity = true; 
+				//rigidBody.detectCollisions = true; 
+			}
+
+			if (grabbedObject.gameObject.tag == "Knife") {
+				CapsuleCollider temp = grabbedObject.GetComponent<CapsuleCollider> ();
+				temp.isTrigger = false;  
+			}
+		
             ReleaseObject(applyGrabbingObjectVelocity);
             base.StopGrab(applyGrabbingObjectVelocity);
         }
@@ -114,8 +138,8 @@ namespace VRTK.GrabAttachMechanics
             }
             else
             {
-                obj.transform.rotation = controllerAttachPoint.transform.rotation * Quaternion.Euler(grabbedSnapHandle.transform.localEulerAngles);
-                obj.transform.position = controllerAttachPoint.transform.position - (grabbedSnapHandle.transform.position - obj.transform.position);
+				obj.transform.rotation = controllerAttachPoint.transform.rotation * Quaternion.Euler(grabbedSnapHandle.transform.localEulerAngles);
+				obj.transform.position = controllerAttachPoint.transform.position - (grabbedSnapHandle.transform.position - obj.transform.position);
             }
         }
 

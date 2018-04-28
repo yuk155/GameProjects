@@ -12,6 +12,8 @@ TagManager:
   - Score
   - Bowl
   - Knife
+  - Controller
+  - Lid
   layers:
   - Default
   - TransparentFX

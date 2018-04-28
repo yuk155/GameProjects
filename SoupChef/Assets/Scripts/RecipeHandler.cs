@@ -70,7 +70,8 @@ public class RecipeHandler : MonoBehaviour {
 	public void getSpawnTime()
 	{
 		//HARDCODED TO SPAWN RECIPES EVERY 4 to 8 SECONDS 
-		recipeSpawnTime = Random.Range (4, 6);
+		recipeSpawnTime = Random.Range (7, 10);
+		//Debug.Log (recipeSpawnTime);
 	}
 
 	public void checkRecipes()
@@ -80,7 +81,6 @@ public class RecipeHandler : MonoBehaviour {
 			recipeScript = recipes[i].GetComponent<Recipe> ();
 			if (recipeScript.checkIfExpired ()) {
 				//remove the recipe from the list
-				Debug.Log("remove recipe");
 				tempRecipe = recipes [i];
 				recipes.Remove (recipes[i]); 
 				Destroy (tempRecipe);
@@ -95,18 +95,22 @@ public class RecipeHandler : MonoBehaviour {
 		}
 	}
 	//FINDS A VALID RECIPE THAT MATCHES A GIVEN SET OF INGREDIENTS 
-	public GameObject findValidRecipe(GameObject[] ingredients)
+	public GameObject findValidRecipe(List<GameObject> ingredients)
 	{
 		int onionCount = 0; 
 		int tomatoCount = 0; 
-		for (int i = 0; i < ingredients.Length; i++) {
-			if (ingredients [i].name == "Tomato") {
+		IngredientHalf temp; 
+		for (int i = 0; i < ingredients.Count; i++) {
+			temp = ingredients [i].GetComponent<IngredientHalf> ();
+			if (temp.name == "Tomato") {
 				tomatoCount++;
-			} else if (ingredients [i].name == "Onion") { 
+			} else if (temp.name == "Onion") { 
 				onionCount++;
 			}
 		}
-		foreach (GameObject recipe in recipes) {
+		Debug.Log ("Ing Tomato count:" + tomatoCount);
+		Debug.Log ("Ing Onion count: " + onionCount);
+		foreach (GameObject recipe in possibleRecipes) {
 			recipeScript = recipe.GetComponent<Recipe> ();
 			if(onionCount==recipeScript.onionNum && tomatoCount == recipeScript.tomatoNum)
 			{
@@ -115,16 +119,31 @@ public class RecipeHandler : MonoBehaviour {
 		}
 		return null; 
 	}
+
+	public GameObject checkMatching(int onion, int tomato)
+	{
+		Debug.Log ("enter checkMatching");
+		foreach(GameObject recipe in recipes)
+		{
+			recipeScript = recipe.GetComponent<Recipe>();
+			if(onion==recipeScript.onionNum && tomato == recipeScript.tomatoNum)
+			{
+				return recipe;
+			}
+		}
+		return null;
+	}
+
 	//REMOVES A RECIPE IF IT HAS BEEN COMPLETED 
 	public void removeRecipe(GameObject recipe)
 	{
-		for (int i = 0; i < recipes.Count; i++) {
-			recipes.Remove (recipe); 
-			for (int j = i; j < recipes.Count; j++) {
-				currPosition = recipes [j].transform.position;
-				currPosition.z -= adjust; 
-				recipes [j].transform.position = currPosition; 
-			}
+		int temp = recipes.IndexOf (recipe);
+		recipes.Remove (recipe);
+		Destroy (recipe);
+		for (int i = temp; i < recipes.Count; i++) {
+			currPosition = recipes [i].transform.position;
+			currPosition.z -= adjust; 
+			recipes [i].transform.position = currPosition; 
 		}
 	}
 

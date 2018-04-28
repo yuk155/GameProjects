@@ -19,6 +19,7 @@ public class Water : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "Bowl") {
+			bowlScript = other.gameObject.GetComponent<Bowl> ();
 			bowlScript.isDirty = false; 
 		}
 	}
